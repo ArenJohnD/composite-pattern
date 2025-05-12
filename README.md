@@ -47,3 +47,5 @@ New Era University is composed of various organizational units. These units can 
    - Calculating and displaying the total budget of a College.
 
 ## UML Class Diagram
+
+![Composite Design Pattern](https://github.com/user-attachments/assets/c2c79ee6-52d9-44e4-aa6e-2621afde16d5)
