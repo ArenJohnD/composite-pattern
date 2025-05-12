@@ -18,14 +18,14 @@ New Era University is composed of various organizational units. These units can 
    The system must accurately represent the "part-whole" relationship between the different entities (e.g., a College *has-a* department, a department *has-a* teacher).
 
 2. **Calculate the number of students**:  
-   The system should be able to calculate the total number of students within any given College, including students in its departments and sub-Colleges.
+   The system should be able to calculate the total number of students within any given College, including students in its departments and sub-colleges.
 
 3. **Display details**:  
    The system should be able to display the details of any educational unit (College, department, teacher, or student) in a clear and organized manner.
 
 4. **Calculate the budget**:  
    The system should be able to calculate the total budget for a College.  
-   - The budget for a College is the sum of the budgets of its departments, teachers, and the negative sum of all the tuition fees of the students.  
+   - The budget for a college is the sum of the budgets of its departments and teachers, and the negative sum of the tuition fees of the students.  
    - The budget of a department is the sum of the budgets of its teachers and the negative sum of the tuition fees of the students in that department.  
    - A teacher's budget is their salary.  
    - A student's budget is the negative value of their tuition fee.
