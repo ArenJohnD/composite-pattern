@@ -2,7 +2,7 @@
 
 New Era University is composed of various organizational units. These units can be either individual entities or compositions of other entities. The system should be able to represent the following:
 
-### Organizational Units
+### Organizational Units:
 
 - **Colleges**: A College is a high-level organizational unit (e.g., "College of Engineering", "College of Business"). A College can contain departments, teachers, and students. It can also contain other Colleges (e.g., a university is composed of several Colleges).
 
@@ -12,7 +12,7 @@ New Era University is composed of various organizational units. These units can 
 
 - **Students**: A student is an individual entity enrolled in a College or department. Each student has a name, a unique student ID, and pays a tuition fee.
 
-### Requirements
+### Requirements:
 
 1. **Model the hierarchical structure**:  
    The system must accurately represent the "part-whole" relationship between the different entities (e.g., a College *has-a* department, a department *has-a* teacher).
@@ -30,7 +30,7 @@ New Era University is composed of various organizational units. These units can 
    - A teacher's budget is their salary.  
    - A student's budget is the negative value of their tuition fee.
 
-### Tasks
+### Tasks:
 
 1. **Design a UML class diagram**:  
    Create a UML class diagram that illustrates the classes, interfaces, and relationships involved in the system.
@@ -46,6 +46,6 @@ New Era University is composed of various organizational units. These units can 
    - Calculating and displaying the total number of students in a College.
    - Calculating and displaying the total budget of a College.
 
-### UML Class Diagram
+### UML Class Diagram:
 
 ![Composite Design Pattern](https://github.com/user-attachments/assets/c2c79ee6-52d9-44e4-aa6e-2621afde16d5)
