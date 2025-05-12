@@ -1,6 +1,9 @@
+import java.util.List;
+import java.util.ArrayList;
+
 class College implements UniversityComponent {
     private String name;
-    private java.util.List<UniversityComponent> components = new java.util.ArrayList<>();
+    private List<UniversityComponent> components = new ArrayList<>();
     
     public College(String name) {
         this.name = name;
@@ -12,6 +15,10 @@ class College implements UniversityComponent {
     
     public void add(UniversityComponent component) {
         components.add(component);
+    }
+
+    public void remove(UniversityComponent component) {
+        components.remove(component);
     }
     
     @Override

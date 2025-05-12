@@ -83,7 +83,6 @@ public class Client {
             displayTitle(currentCollegeInfo.title);
             System.out.println();
             
-            // Display college-level information
             College currentCollege = currentCollegeInfo.collegeObject;
             System.out.println("• Number of Students: " + currentCollege.getNumberOfStudents());
             System.out.printf("• Budget: %s₱%,.2f\n", currentCollege.getBudget() >= 0 ? "" : "-", Math.abs(currentCollege.getBudget()));
