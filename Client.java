@@ -2,7 +2,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Client {
-
     public static void main(String[] args) {
         College university = new College("New Era University");
 
