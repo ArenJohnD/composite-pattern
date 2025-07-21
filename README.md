@@ -1,4 +1,4 @@
-# Composite Design Pattern
+# University Organizational Hierarchy System
 
 <p>New Era University is composed of various organizational units. These units can be either individual entities or compositions of other entities. The system should be able to represent the following:</p>
 
