@@ -26,8 +26,7 @@ This project implements the Composite Design Pattern with the following componen
 - **Recursive aggregation**: Totals are computed by delegating to child components
 
 ## 📊 UML Class Diagram
-
-![UML Class Diagram](UML%20Class%20Diagram.png)
+<img width="2080" height="960" alt="UML Class Diagram" src="https://github.com/user-attachments/assets/dba21021-acd3-4e97-83cf-e4d56cb5e426" />
 
 The diagram shows the `UniversityComponent` interface, composite implementations (`College`, `Department`), leaf implementations (`Teacher`, `Student`), and the `Client` that composes them.
 
@@ -166,6 +165,8 @@ Contributions are welcome:
 
 ## 📄 License
 
-Educational project; add a LICENSE file to specify reuse terms if you plan to distribute.
+This project is open source and available under the [MIT License](LICENSE).
+
+---
 
 **Note**: This implementation demonstrates clean code principles and design patterns best practices. The Composite pattern is particularly useful when representing part–whole hierarchies, when you need to perform recursive operations over tree structures, or when clients should treat individual objects and compositions uniformly.
