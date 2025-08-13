@@ -1,51 +1,171 @@
-# University Organizational Hierarchy System
+# University Structure Manager
 
-<p>New Era University is composed of various organizational units. These units can be either individual entities or compositions of other entities. The system should be able to represent the following:</p>
+A Java implementation of the Composite Design Pattern to model a university’s organizational hierarchy (university → colleges → departments → teachers and students). It demonstrates uniform treatment of individual and composite objects and recursive aggregation of data.
 
-### Organizational Units:
+## 📋 Overview
 
-- **Colleges**: A college is a high-level organizational unit (e.g., "College of Engineering", "College of Business"). A college can contain departments, teachers, and students. It can also contain other colleges (e.g., a university is composed of several colleges).
+The University Structure Manager lets you compose a hierarchy of colleges and departments containing teachers and students. Using the Composite pattern, the application can:
 
-- **Departments**: A department is a subdivision within a college, focusing on a specific subject (e.g., "Department of Computer Science", "Department of Information Technology"). A department can contain teachers and students.
+- Compute total student counts at any level
+- Compute aggregate budgets by summing salaries and subtracting tuitions
+- Display formatted details for any composite
 
-- **Teachers**: A teacher is an individual entity responsible for instructing students. Each teacher has a name, a subject they teach, and a salary.
+## 🏗️ Architecture
 
-- **Students**: A student is an individual entity enrolled in a college or department. Each student has a name, a unique student ID, and pays a tuition fee.
+This project implements the Composite Design Pattern with the following components:
 
-### Requirements:
+- **UniversityComponent (interface)**: Defines the contract for all units (budget, student count, display)
+- **Composite classes**: `College`, `Department`
+- **Leaf classes**: `Teacher`, `Student`
+- **Main application**: `Client` builds a sample hierarchy and prints summaries
 
-1. **Model the hierarchical structure**:  
-   The system must accurately represent the "part-whole" relationship between the different entities (e.g., a college *has-a* department, a department *has-a* teacher).
+### Design Pattern Benefits
 
-2. **Calculate the number of students**:  
-   The system should be able to calculate the total number of students within any given college, including students in its departments and sub-colleges.
+- **Uniformity**: Treat groups and single objects through a common interface
+- **Extensibility**: Add new units (leaves or composites) without changing existing client code
+- **Recursive aggregation**: Totals are computed by delegating to child components
 
-3. **Display details**:  
-   The system should be able to display the details of any educational unit (college, department, teacher, or student) in a clear and organized manner.
+## 📊 UML Class Diagram
 
-4. **Calculate the budget**:  
-   The system should be able to calculate the total budget for a college.  
-   - The budget for a college is the sum of the budgets of its departments and teachers, and the negative sum of the tuition fees of the students.  
-   - The budget of a department is the sum of the budgets of its teachers and the negative sum of the tuition fees of the students in that department.  
-   - A teacher's budget is their salary.  
-   - A student's budget is the negative value of their tuition fee.
+![UML Class Diagram](UML%20Class%20Diagram.png)
 
-### Tasks:
+The diagram shows the `UniversityComponent` interface, composite implementations (`College`, `Department`), leaf implementations (`Teacher`, `Student`), and the `Client` that composes them.
 
-1. **Design a UML class diagram**:  
-   Create a UML class diagram that illustrates the classes, interfaces, and relationships involved in the system.
+## 🚀 Features
 
-2. **Implement the system in Java**:  
-   Write Java code that implements the design, adhering to the Composite Design Pattern.
+- **Multi-level hierarchy**: University → Colleges → Departments → Teachers/Students
+- **Recursive metrics**: Student counts and budgets roll up automatically
+- **Formatted console output**: Clear summaries and component listings
+- **Easy to extend**: Implement `UniversityComponent` for new unit types
 
-3. **Create a client program**:  
-   Write a client program that demonstrates the functionality of the system by:
-   - Creating instances of colleges, departments, teachers, and students.
-   - Organizing these instances into a hierarchical structure.
-   - Displaying the details of a college.
-   - Calculating and displaying the total number of students in a college.
-   - Calculating and displaying the total budget of a college.
+## 📁 Project Structure
 
-### UML Class Diagram:
+```
+university-structure-composite/
+├── src/
+│   ├── UniversityComponent.java      # Component interface
+│   ├── College.java                  # Composite: contains components
+│   ├── Department.java               # Composite: contains components
+│   ├── Teacher.java                  # Leaf: salary contributes to budget
+│   ├── Student.java                  # Leaf: tuition (negative) contributes to budget
+│   └── Client.java                   # Main application demo
+└── README.md                         # Project documentation
+```
 
-![Composite Design Pattern](https://github.com/user-attachments/assets/c2c79ee6-52d9-44e4-aa6e-2621afde16d5)
+## 🛠️ Installation & Setup
+
+### Prerequisites
+
+- Java Development Kit (JDK) 8 or higher
+
+### Getting Started
+
+1. Navigate to the project directory
+2. Compile the Java files
+
+   Windows PowerShell:
+   ```powershell
+   javac src\*.java
+   ```
+
+   macOS/Linux (bash/zsh):
+   ```bash
+   javac src/*.java
+   ```
+
+3. Run the application
+
+   Windows PowerShell and macOS/Linux:
+   ```bash
+   java -cp src Client
+   ```
+
+## 📖 Usage
+
+The main application (`Client.java`) builds a sample structure. To create your own programmatic structure:
+
+```java
+College university = new College("New Era University");
+
+College arts = new College("College of Arts and Sciences");
+Department biology = new Department("Bachelor of Science in Biology");
+biology.add(new Teacher("Dr. Maria Santos", "Molecular Biology", 95_000));
+biology.add(new Student("Angela Reyes", "BIO001", 85_000));
+arts.add(biology);
+
+university.add(arts);
+
+System.out.println("Students: " + university.getNumberOfStudents());
+System.out.printf("Budget: %s₱%,.2f\n",
+        university.getBudget() >= 0 ? "" : "-", Math.abs(university.getBudget()));
+```
+
+## ✅ Expected Output (abridged)
+
+```text
+==============================================================
+                     UNIVERSITY STRUCTURE
+==============================================================
+
+• University: New Era University
+• Number of Students: 12
+• Budget: -₱225,000.00
+
+==============================================================
+             COLLEGE OF ARTS AND SCIENCES
+==============================================================
+
+• Number of Students: 6
+• Budget: -₱105,000.00
+
+==============================================================
+• Department: Bachelor of Science in Biology
+• Number of Students: 3
+• Budget: -₱55,000.00
+
+• Components:
+  • Teacher: Dr. Maria Santos
+    - Subject: Molecular Biology
+    - Salary: ₱95,000.00
+  ...
+```
+
+Totals correspond to values constructed in `Client.java` and are computed recursively via the Composite pattern.
+
+## 🔧 Extending the Project
+
+Add a new unit (e.g., `Staff`) by implementing `UniversityComponent`:
+
+```java
+class Staff implements UniversityComponent {
+    private final String name;
+    private final double salary;
+
+    Staff(String name, double salary) { this.name = name; this.salary = salary; }
+    public double getBudget() { return salary; }
+    public int getNumberOfStudents() { return 0; }
+    public void displayComponentsFormatted() { /* print details if needed */ }
+}
+```
+
+Then add instances of `Staff` to a `Department` or `College` using their `add(...)` method.
+
+## 🎯 Design Patterns Used
+
+### Composite Pattern
+- **Purpose**: Treat individual and composite objects uniformly
+- **Benefits**: Simplifies client code, supports recursive aggregation, and eases extension
+- **Implementation**: `UniversityComponent` as the component interface; `College`/`Department` as composites; `Teacher`/`Student` as leaves
+
+## 🤝 Contributing
+
+Contributions are welcome:
+- Improve documentation and examples
+- Add new composite/leaf types
+- Enhance formatting or add tests
+
+## 📄 License
+
+Educational project; add a LICENSE file to specify reuse terms if you plan to distribute.
+
+**Note**: This implementation demonstrates clean code principles and design patterns best practices. The Composite pattern is particularly useful when representing part–whole hierarchies, when you need to perform recursive operations over tree structures, or when clients should treat individual objects and compositions uniformly.
