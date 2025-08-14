@@ -1,6 +1,6 @@
 # University Structure Manager
 
-A Java implementation of the Composite Design Pattern to model a university’s organizational hierarchy (university → colleges → departments → teachers and students). It demonstrates uniform treatment of individual and composite objects and recursive aggregation of data.
+A Java implementation of the **Composite Design Pattern** to model a university’s organizational hierarchy (university → colleges → departments → teachers and students). It demonstrates uniform treatment of individual and composite objects and recursive aggregation of data.
 
 ## 📋 Overview
 
